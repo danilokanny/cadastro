@@ -1,20 +1,49 @@
 <?php
-
-include 'conection.php';
-
 header('Content-Type: text/html; charset=utf-8');
 
+include "conection.php";
 
-// Consulta que pega todos os produtos e o nome da categoria de cada um
-$sql = "SELECT p.*, c.'nome' AS categoria FROM 'produtos' AS p INNER JOIN 'categorias' AS c ON p.'categoria_id' = c.'id' ORDER BY p.'nome' ASC";
-$query =  mysql_query($sql) or die(mysql_error());;
+	// Seleciona os projetos
+	$familia = "SELECT * FROM familia";
+			//$result = mysql_query($query);
+		// Executa a query
+		if ($result = mysql_query($familia)) {
 
-while ($produto = mysql_fetch_assoc($query)) {
-  // Aqui temos o array $produto com todos os dados encontrados
-  echo 'Titulo: ' . $produto['nome'] . '<br>';
-  echo 'Preço: ' . $produto['preco'] . '<br>';
-  echo 'Categoria: ' . $produto['categoria']. '<br>';
-  echo '<hr />';
+			// Titulo geral
+		echo "<h1>Listagem das doacao</h1>";
+			// Lista os projetos
+			while ($row = mysql_fetch_array($result)) {
+					echo "ID: ".$row['id'],"-</div>"."<br>"; }
+
 }
 
+			// Seleciona os projetos
+				$responsavel = "SELECT * FROM responsavel";
+						//$result = mysql_query($query);
+					// Executa a query
+					if ($result = mysql_query($responsavel)) {
+
+						// Titulo geral
+					//echo "<h1>Listagem das doacao</h1>";
+						// Lista os projetos
+						while ($row = mysql_fetch_array($result)) {
+								echo "nome: ".$row['nome'],"-</div>"."<br>"; }
+
+			}
+
+		// Seleciona os campos da tabela
+		$query = "SELECT * FROM doacao";
+			//$result = mysql_query($query);
+			// Executa a query
+			if ($result = mysql_query($query)) {
+					// Titulo geral
+			//echo "<h1>Listagem das doacao</h1>";
+				// Lista os projetos
+			while ($row = mysql_fetch_array($result)) {
+				echo "Proximo Recebimento: "."<td>".$row['prox_recebimento'],"-</div>"."<br>"."</td>";
+			}
+		} 
+
+
+	
 ?>

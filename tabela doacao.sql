@@ -1,0 +1,1 @@
+CREATE TABLE `doacao`.`doacao` ( `id` INT NOT NULL AUTO_INCREMENT , `data_recebimento` DATE NOT NULL , `descricao` TEXT CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , `quantidade` INT(255) NOT NULL , `prox_recebimento` DATE NOT NULL , PRIMARY KEY (`id`) ) ENGINE = InnoDB CHARACTER SET utf8 COLLATE utf8_general_ci;
